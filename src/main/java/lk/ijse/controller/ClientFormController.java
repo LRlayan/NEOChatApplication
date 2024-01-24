@@ -11,17 +11,22 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
+import java.awt.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ClientFormController implements Initializable {
@@ -75,39 +80,107 @@ public class ClientFormController implements Initializable {
     }
 
     public static void receiveMessage(String receiveMessage , VBox vBox){
-        String username = receiveMessage.split("-")[0];
-        String clientMsg = receiveMessage.split("-")[1];
+        if (receiveMessage.matches(".*\\.(png|jpe?g|gif)$")){
+            HBox hBox = new HBox();
+            hBox.setAlignment(Pos.CENTER_LEFT);
 
-        HBox hBoxName = new HBox();
-        hBoxName.setAlignment(Pos.CENTER_LEFT);
+            Text textName = new Text(receiveMessage.split("-")[0]);
+            TextFlow textFlow = new TextFlow(textName);
+            hBox.getChildren().add(textFlow);
 
-        Text name = new Text(username);
-        TextFlow textFlowName = new TextFlow(name);
-        hBoxName.getChildren().add(textFlowName);
+            Image image = new Image(receiveMessage.split("-")[1]);
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(200);
+            imageView.setFitWidth(200);
 
-        HBox hBoxMsg = new HBox();
-        hBoxMsg.setAlignment(Pos.CENTER_LEFT);
-        hBoxMsg.setPadding(new Insets(5,5,5,10));
+            HBox hBoxImage = new HBox();
+            hBoxImage.setAlignment(Pos.CENTER_LEFT);
+            hBoxImage.setPadding(new Insets(5,5,5,10));
+            hBoxImage.getChildren().add(imageView);
 
-        Text textMsg = new Text(clientMsg);
-        textMsg.setFill(Color.color(0,0,0));
-        TextFlow textFlow = new TextFlow(textMsg);
-        textFlow.setStyle("-fx-background-color: #abb8c3; -fx-font-weight: bold; -fx-background-radius: 20");
-        textFlow.setPadding(new Insets(5,10,5,10));
-        hBoxMsg.getChildren().add(textFlow);
+            HBox hBoxTime = setTimeOnMsg("LEFT");
 
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                vBox.getChildren().add(hBoxName);
-                vBox.getChildren().add(hBoxMsg);
-            }
-        });
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    vBox.getChildren().add(hBox);
+                    vBox.getChildren().add(hBoxImage);
+                    vBox.getChildren().add(hBoxTime);
+                }
+            });
+        }else {
+
+            String username = receiveMessage.split("-")[0];
+            String clientMsg = receiveMessage.split("-")[1];
+
+            HBox hBoxName = new HBox();
+            hBoxName.setAlignment(Pos.CENTER_LEFT);
+            hBoxName.setPadding(new Insets(5, 10, 0, 10));
+
+            Text name = new Text(username);
+            TextFlow textFlowName = new TextFlow(name);
+            hBoxName.getChildren().add(textFlowName);
+
+            HBox hBoxMsg = new HBox();
+            hBoxMsg.setAlignment(Pos.CENTER_LEFT);
+            hBoxMsg.setPadding(new Insets(5, 10, 0, 5));
+
+            Text textMsg = new Text(clientMsg);
+            textMsg.setFill(Color.color(0, 0, 0));
+            TextFlow textFlow = new TextFlow(textMsg);
+            textFlow.setStyle("-fx-background-color: #abb8c3; -fx-font-weight: bold; -fx-background-radius: 20");
+            textFlow.setPadding(new Insets(5, 10, 5, 10));
+            hBoxMsg.getChildren().add(textFlow);
+
+            HBox hBoxTime = ClientFormController.setTimeOnMsg("LEFT");
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    vBox.getChildren().add(hBoxName);
+                    vBox.getChildren().add(hBoxMsg);
+                    vBox.getChildren().add(hBoxTime);
+                }
+            });
+        }
     }
 
     @FXML
     void sendMsgOnAction(ActionEvent event) {
         sendMsg(txtMsg.getText());
+    }
+
+    @FXML
+    void sendImageOnAction(ActionEvent event) {
+        FileDialog fileDialog = new FileDialog((Frame) null,"Select Image");
+        fileDialog.setMode(FileDialog.LOAD);
+        fileDialog.setVisible(true);
+        String file = fileDialog.getDirectory() + fileDialog.getFile();
+        fileDialog.dispose();
+        sendImage(file);
+    }
+
+    public void sendImage(String sendImage){
+        Image image = new Image(sendImage);
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(200);
+
+        HBox hBox = new HBox();
+        hBox.setAlignment(Pos.CENTER_RIGHT);
+        hBox.setPadding(new Insets(5,5,5,10));
+        hBox.getChildren().add(imageView);
+
+        HBox hBoxTime = setTimeOnMsg("RIGHT");
+
+        vBox.getChildren().add(hBox);
+        vBox.getChildren().add(hBoxTime);
+        try {
+            dataOutputStream.writeUTF(username + "-" + sendImage);
+            dataOutputStream.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void sendMsg(String sendClientMsg){
@@ -120,25 +193,21 @@ public class ClientFormController implements Initializable {
             text.setStyle("-fx-font-size: 14");
             TextFlow textFlow = new TextFlow(text);
 
-            textFlow.setStyle("-fx-background-color: #20c32a; -fx-font-weight: bold; -fx-color: white; -fx-background-radius: 20px");
-            textFlow.setPadding(new Insets(5, 10, 5, 10));
-            text.setFill(Color.color(1, 1, 1));
+        textFlow.setStyle("-fx-background-color: #904aae; -fx-font-weight: bold; -fx-color: white; -fx-background-radius: 20px");
+        textFlow.setPadding(new Insets(5, 10, 5, 10));
+        text.setFill(Color.color(1, 1, 1));
 
-            hBox.getChildren().add(textFlow);
+        hBox.getChildren().add(textFlow);
 
-            HBox hBoxName = new HBox();
-            hBoxName.setAlignment(Pos.CENTER_RIGHT);
-            hBoxName.setPadding(new Insets(5, 5, 0, 10));
+        HBox hBoxName = new HBox();
+        hBoxName.setAlignment(Pos.CENTER_RIGHT);
+        hBoxName.setPadding(new Insets(5, 5, 0, 5));
 
-            Text textName = new Text("me ");
-            textName.setStyle("-fx-font-size: 12");
+        HBox hBoxTime = setTimeOnMsg("RIGHT");
 
-            TextFlow textFlowName = new TextFlow(textName);
-            textName.setFill(Color.color(0, 0, 0));
-            hBoxName.getChildren().add(textFlowName);
-
-            vBox.getChildren().add(hBoxName);
-            vBox.getChildren().add(hBox);
+        vBox.getChildren().add(hBox);
+        vBox.getChildren().add(hBoxTime);
+        System.out.println(sendClientMsg.length());
 
             try {
                 dataOutputStream.writeUTF(username + "-" + sendClientMsg);
@@ -147,5 +216,23 @@ public class ClientFormController implements Initializable {
                 throw new RuntimeException(e);
             }
             txtMsg.clear();
+    }
+
+    public static HBox setTimeOnMsg(String alignment){
+        HBox hBox = new HBox();
+        if (alignment == "RIGHT"){
+            hBox.setAlignment(Pos.CENTER_RIGHT);
+            hBox.setPadding(new Insets(3,12,5,10));
+        }else {
+            hBox.setAlignment(Pos.CENTER_LEFT);
+            hBox.setPadding(new Insets(3,10,5,12));
+        }
+
+        String setTime = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
+        Text time = new Text(setTime);
+        time.setStyle("-fx-font-size: 8");
+
+        hBox.getChildren().add(time);
+        return hBox;
     }
 }
