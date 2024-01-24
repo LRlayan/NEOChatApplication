@@ -12,7 +12,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="705.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ClientFormController">
    <children>
       <ImageView fitHeight="900.0" fitWidth="600.0" layoutY="-196.0">
@@ -22,32 +21,39 @@
       </ImageView>
       <ScrollPane fx:id="scrollPane" layoutX="9.0" layoutY="87.0" prefHeight="553.0" prefWidth="583.0" style="-fx-background-color: #FFFFFF;">
          <content>
-            <VBox fx:id="vBox" prefHeight="62.0" prefWidth="551.0" />
+            <VBox fx:id="vBox" prefHeight="62.0" prefWidth="576.0" />
          </content>
       </ScrollPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#904aae" height="85.0" layoutY="-7.0" stroke="#904aae" strokeType="INSIDE" width="600.0" />
-      <Label layoutX="405.0" layoutY="35.0" text="Welcome NEO Chat " textFill="WHITE">
+      <Label layoutX="405.0" layoutY="24.0" text="Welcome NEO Chat " textFill="WHITE">
          <font>
             <Font name="Gadugi Bold" size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="txtMsg" layoutX="9.0" layoutY="650.0" prefHeight="44.0" prefWidth="583.0" promptText="   Typing....." style="-fx-background-radius: 20;" />
-      <Circle fill="#904aae" layoutX="570.0" layoutY="672.0" radius="22.0" stroke="WHITE" strokeType="INSIDE" />
+      <TextField fx:id="txtMsg" layoutX="9.0" layoutY="650.0" prefHeight="44.0" prefWidth="486.0" promptText="   Typing....." style="-fx-background-radius: 20;" />
+      <Circle fill="#904aae" layoutX="570.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
       <ImageView layoutX="557.0" layoutY="657.0">
          <image>
             <Image url="@../image/sendIcon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="11.0" layoutY="18.0">
-         <image>
-            <Image url="@../image/neoLogo32.png" />
-         </image>
-      </ImageView>
       <JFXButton buttonType="RAISED" layoutX="549.0" layoutY="652.0" onAction="#sendMsgOnAction" prefHeight="40.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
-      <Label fx:id="lblUsername" layoutX="78.0" layoutY="30.0" prefHeight="17.0" prefWidth="166.0" textFill="WHITE">
+      <Label fx:id="lblUsername" layoutX="78.0" layoutY="27.0" prefHeight="17.0" prefWidth="166.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
+      <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="4.0" layoutY="3.0">
+         <image>
+            <Image url="@../image/userIcon.png" />
+         </image>
+      </ImageView>
+      <Circle fill="#904aae" layoutX="521.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
+      <ImageView fitHeight="24.0" fitWidth="31.0" layoutX="505.0" layoutY="660.0">
+         <image>
+            <Image url="@../image/IconCamera.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="499.0" layoutY="651.0" onAction="#sendImageOnAction" prefHeight="42.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
    </children>
 </AnchorPane>
