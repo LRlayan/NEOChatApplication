@@ -8,14 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="333.0" prefWidth="520.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.LoginFormController">
    <children>
-      <ImageView fitHeight="138.0" fitWidth="155.0" layoutX="183.0" layoutY="11.0">
-         <image>
-            <Image url="@../image/userIcon.png" />
-         </image>
-      </ImageView>
       <Label layoutX="221.0" layoutY="155.0" text="Username">
          <font>
             <Font size="18.0" />
@@ -23,11 +17,21 @@
       </Label>
       <TextField fx:id="txtUsername" layoutX="128.0" layoutY="198.0" prefHeight="25.0" prefWidth="265.0" promptText="username" />
       <JFXButton buttonType="RAISED" layoutX="207.0" layoutY="250.0" onAction="#loginOnAction" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: #904aae;" text="Login" textFill="WHITE" />
-      <Label layoutX="228.0" layoutY="299.0" text="Join neo Chat">
+      <Label layoutX="216.0" layoutY="303.0" text="Join NEO Chat App">
          <font>
             <Font size="11.0" />
          </font>
       </Label>
       <Label fx:id="lblErrorMsg" layoutX="128.0" layoutY="228.0" prefHeight="17.0" prefWidth="265.0" textFill="RED" />
+      <ImageView fitHeight="154.0" fitWidth="154.0" layoutX="185.0" layoutY="3.0">
+         <image>
+            <Image url="@../image/loginIcon.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="20.0" layoutY="13.0" text="NEO">
+         <font>
+            <Font name="Bell MT Bold" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
