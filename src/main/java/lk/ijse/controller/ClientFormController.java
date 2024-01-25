@@ -1,5 +1,6 @@
 package lk.ijse.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,11 +14,13 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import lk.ijse.emoji.EmojiBar;
 
 import java.awt.*;
 import java.io.DataInputStream;
@@ -32,6 +35,8 @@ import java.util.ResourceBundle;
 public class ClientFormController implements Initializable {
 
     @FXML
+    private AnchorPane anchorpane;
+    @FXML
     private Label lblUsername;
     public static String username;
     @FXML
@@ -43,6 +48,10 @@ public class ClientFormController implements Initializable {
     private Socket socket;
     private DataOutputStream dataOutputStream;
     private DataInputStream dataInputStream;
+    @FXML
+    private JFXButton emojiBtn;
+
+    EmojiBar emojiBar = new EmojiBar();
 
     public void setUsername(){
         lblUsername.setText(username);
@@ -76,6 +85,36 @@ public class ClientFormController implements Initializable {
             public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
                 scrollPane.setVvalue((Double) newValue);
             }
+        });
+        emoji();
+    }
+
+    private void emoji() {
+
+        VBox vBox = new VBox(emojiBar);
+        vBox.setPrefSize(150,300);
+        vBox.setStyle("-fx-font-size: 25");
+        vBox.setLayoutX(0);
+        vBox.setLayoutY(350);
+
+        anchorpane.getChildren().add(vBox);
+
+        emojiBar.setVisible(false);
+
+        emojiBtn.setOnAction(event -> {
+            if (emojiBar.isVisible()){
+                emojiBar.setVisible(false);
+            }else {
+                emojiBar.setVisible(true);
+            }
+        });
+
+        emojiBar.getImjoListView().setOnMouseClicked(event ->{
+            String selectEmoji = emojiBar.getImjoListView().getSelectionModel().getSelectedItem();
+            if (selectEmoji != null){
+                txtMsg.setText(txtMsg.getText() + selectEmoji);
+            }
+            emojiBar.setVisible(false);
         });
     }
 
@@ -184,14 +223,14 @@ public class ClientFormController implements Initializable {
     }
 
     public void sendMsg(String sendClientMsg){
-        //String sendClientMsg = txtMsg.getText();
-            HBox hBox = new HBox();
-            hBox.setAlignment(Pos.CENTER_RIGHT);
-            hBox.setPadding(new Insets(5, 5, 0, 10));
 
-            Text text = new Text(sendClientMsg);
-            text.setStyle("-fx-font-size: 14");
-            TextFlow textFlow = new TextFlow(text);
+        HBox hBox = new HBox();
+        hBox.setAlignment(Pos.CENTER_RIGHT);
+        hBox.setPadding(new Insets(5, 5, 0, 10));
+
+        Text text = new Text(sendClientMsg);
+        text.setStyle("-fx-font-size: 14");
+        TextFlow textFlow = new TextFlow(text);
 
         textFlow.setStyle("-fx-background-color: #904aae; -fx-font-weight: bold; -fx-color: white; -fx-background-radius: 20px");
         textFlow.setPadding(new Insets(5, 10, 5, 10));
@@ -207,7 +246,7 @@ public class ClientFormController implements Initializable {
 
         vBox.getChildren().add(hBox);
         vBox.getChildren().add(hBoxTime);
-        System.out.println(sendClientMsg.length());
+        //System.out.println(sendClientMsg.length());
 
             try {
                 dataOutputStream.writeUTF(username + "-" + sendClientMsg);
