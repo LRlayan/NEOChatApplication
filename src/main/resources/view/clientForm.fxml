@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="705.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ClientFormController">
+<AnchorPane fx:id="anchorpane" prefHeight="705.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.ClientFormController">
    <children>
       <ImageView fitHeight="900.0" fitWidth="600.0" layoutY="-196.0">
          <image>
@@ -30,7 +30,7 @@
             <Font name="Gadugi Bold" size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="txtMsg" layoutX="9.0" layoutY="650.0" prefHeight="44.0" prefWidth="486.0" promptText="   Typing....." style="-fx-background-radius: 20;" />
+      <TextField fx:id="txtMsg" layoutX="58.0" layoutY="650.0" prefHeight="44.0" prefWidth="437.0" promptText="   Typing....." style="-fx-background-radius: 20;" />
       <Circle fill="#904aae" layoutX="570.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
       <ImageView layoutX="557.0" layoutY="657.0">
          <image>
@@ -55,5 +55,12 @@
          </image>
       </ImageView>
       <JFXButton buttonType="RAISED" layoutX="499.0" layoutY="651.0" onAction="#sendImageOnAction" prefHeight="42.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
+      <Circle fill="#904aae" layoutX="31.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
+      <ImageView fitHeight="56.0" fitWidth="52.0" layoutX="5.0" layoutY="646.0">
+         <image>
+            <Image url="@../image/emojiIcon.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="emojiBtn" buttonType="RAISED" layoutX="9.0" layoutY="651.0" prefHeight="42.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
    </children>
 </AnchorPane>
