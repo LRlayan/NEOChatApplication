@@ -27,6 +27,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import lk.ijse.emoji.EmojiBar;
+import lk.ijse.sinhalaType.SinhalaTyping;
 
 import java.awt.*;
 import java.io.DataInputStream;
@@ -64,11 +65,14 @@ public class ClientFormController implements Initializable {
     private JFXButton btnMaxRestore;
     @FXML
     private JFXButton btnMinimize;
-
+    @FXML
+    private JFXButton btnSinhala;
     @FXML
     private JFXButton btnRestore;
 
     EmojiBar emojiBar = new EmojiBar();
+    SinhalaTyping characterBar = new SinhalaTyping();
+
 
     public ClientFormController(){
 
@@ -202,6 +206,35 @@ public class ClientFormController implements Initializable {
             }
         });
         emoji();
+        sinhalaWords();
+    }
+
+    private void sinhalaWords(){
+
+        VBox vBox = new VBox(characterBar);
+        vBox.setPrefSize(150,300);
+        vBox.setStyle("-fx-font-size: 25");
+        vBox.setLayoutX(0);
+        vBox.setLayoutY(350);
+
+        anchorpane.getChildren().add(vBox);
+        characterBar.setVisible(false);
+
+        btnSinhala.setOnAction(event ->{
+            if (characterBar.isVisible()){
+                characterBar.setVisible(false);
+            }else {
+                characterBar.setVisible(true);
+            }
+        });
+
+        characterBar.getSinhalaWordsView().setOnMouseClicked(event ->{
+            String selectCharacter = characterBar.getSinhalaWordsView().getSelectionModel().getSelectedItem();
+            if (selectCharacter != null){
+                txtMsg.setText(txtMsg.getText() + selectCharacter);
+            }
+          //  characterBar.setVisible(false);
+        });
     }
 
     private void emoji() {
@@ -209,7 +242,7 @@ public class ClientFormController implements Initializable {
         VBox vBox = new VBox(emojiBar);
         vBox.setPrefSize(150,300);
         vBox.setStyle("-fx-font-size: 25");
-        vBox.setLayoutX(0);
+        vBox.setLayoutX(50);
         vBox.setLayoutY(350);
 
         anchorpane.getChildren().add(vBox);
