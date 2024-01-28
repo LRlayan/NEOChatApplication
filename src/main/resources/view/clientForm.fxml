@@ -15,14 +15,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorpane" onMouseDragged="#anchorPaneDraggedOnAction" onMousePressed="#anchorPanePressedOnAction" prefHeight="696.0" prefWidth="600.0" style="-fx-background-color: #904aae;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorpane" onMouseDragged="#anchorPaneDraggedOnAction" onMousePressed="#anchorPanePressedOnAction" prefHeight="704.0" prefWidth="682.0" style="-fx-background-color: #904aae;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="623.0" fitWidth="600.0" layoutY="81.0">
+      <ImageView fitHeight="623.0" fitWidth="682.0" layoutY="81.0">
          <image>
             <Image url="@../image/chatBackground.jpg" />
          </image>
       </ImageView>
-      <ScrollPane fx:id="scrollPane" layoutX="9.0" layoutY="87.0" prefHeight="553.0" prefWidth="583.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/scrollPane.css">
+      <ScrollPane fx:id="scrollPane" layoutX="9.0" layoutY="87.0" prefHeight="553.0" prefWidth="664.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/scrollPane.css">
          <content>
             <VBox fx:id="vBox" prefHeight="62.0" prefWidth="576.0" />
          </content>
@@ -36,36 +36,36 @@
             <String fx:value="track" />
          </styleClass>
       </ScrollPane>
-      <Label layoutX="411.0" layoutY="42.0" text="Welcome NEO Chat " textFill="WHITE">
+      <Label layoutX="498.0" layoutY="44.0" text="Welcome NEO Chat " textFill="WHITE">
          <font>
             <Font name="Gadugi Bold" size="19.0" />
          </font>
       </Label>
-      <TextField fx:id="txtMsg" layoutX="58.0" layoutY="650.0" prefHeight="44.0" prefWidth="437.0" promptText="   Typing....." style="-fx-background-radius: 20;" />
-      <Circle fill="#904aae" layoutX="570.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
-      <ImageView layoutX="557.0" layoutY="657.0">
+      <TextField fx:id="txtMsg" layoutX="111.0" layoutY="650.0" prefHeight="44.0" prefWidth="463.0" promptText="   Typing....." style="-fx-background-radius: 20;" />
+      <Circle fill="#904aae" layoutX="651.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
+      <ImageView layoutX="638.0" layoutY="657.0">
          <image>
             <Image url="@../image/sendIcon.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="549.0" layoutY="652.0" onAction="#sendMsgOnAction" prefHeight="40.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
-      <Label fx:id="lblUsername" layoutX="78.0" layoutY="27.0" prefHeight="17.0" prefWidth="166.0" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="629.0" layoutY="652.0" onAction="#sendMsgOnAction" prefHeight="40.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
+      <Label fx:id="lblUsername" layoutX="98.0" layoutY="28.0" prefHeight="17.0" prefWidth="166.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="4.0" layoutY="4.0">
+      <ImageView fitHeight="72.0" fitWidth="72.0" layoutX="9.0" layoutY="4.0">
          <image>
             <Image url="@../image/userIcon.png" />
          </image>
       </ImageView>
-      <Circle fill="#904aae" layoutX="521.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
-      <ImageView fitHeight="24.0" fitWidth="31.0" layoutX="505.0" layoutY="660.0">
+      <Circle fill="#904aae" layoutX="602.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
+      <ImageView fitHeight="24.0" fitWidth="31.0" layoutX="586.0" layoutY="660.0">
          <image>
             <Image url="@../image/IconCamera.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="499.0" layoutY="651.0" onAction="#sendImageOnAction" prefHeight="42.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="580.0" layoutY="651.0" onAction="#sendImageOnAction" prefHeight="42.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
       <Circle fill="#904aae" layoutX="31.0" layoutY="672.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
       <ImageView fitHeight="56.0" fitWidth="52.0" layoutX="5.0" layoutY="646.0">
          <image>
@@ -75,21 +75,28 @@
       <JFXButton fx:id="emojiBtn" buttonType="RAISED" layoutX="9.0" layoutY="651.0" prefHeight="42.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
       <Group layoutX="332.0" layoutY="21.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="18.0" layoutX="226.0" layoutY="-6.0" stroke="WHITE" strokeType="INSIDE" width="23.0" />
-            <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="222.0" layoutY="-13.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="18.0" layoutX="316.0" layoutY="-6.0" stroke="WHITE" strokeType="INSIDE" width="23.0" />
+            <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="312.0" layoutY="-13.0">
                <image>
                   <Image url="@../image/closeIcon.png" />
                </image>
             </ImageView>
          </children>
       </Group>
-      <Circle layoutX="535.0" layoutY="23.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="14.0" layoutX="526.0" layoutY="16.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" width="18.0" />
-      <Circle layoutX="501.0" layoutY="23.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-      <Line endX="-86.5" layoutX="594.0" layoutY="24.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
-      <JFXButton fx:id="btnMinimize" layoutX="487.0" layoutY="9.0" onAction="#minimizeOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
-      <JFXButton fx:id="btnClose" layoutX="556.0" layoutY="8.0" onAction="#closeOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
-      <JFXButton fx:id="btnRestore" layoutX="521.0" layoutY="8.0" onAction="#restoreOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
-      <JFXButton fx:id="btnMaxRestore" layoutX="521.0" layoutY="8.0" onAction="#maxRestoreOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
+      <Circle layoutX="621.0" layoutY="23.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="14.0" layoutX="612.0" layoutY="16.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" width="18.0" />
+      <Circle layoutX="582.0" layoutY="23.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line endX="-86.5" layoutX="675.0" layoutY="24.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" />
+      <JFXButton fx:id="btnMinimize" layoutX="568.0" layoutY="9.0" onAction="#minimizeOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
+      <JFXButton fx:id="btnClose" layoutX="645.0" layoutY="8.0" onAction="#closeOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
+      <JFXButton fx:id="btnRestore" layoutX="607.0" layoutY="8.0" onAction="#restoreOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
+      <JFXButton fx:id="btnMaxRestore" layoutX="607.0" layoutY="8.0" onAction="#maxRestoreOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
+      <Circle fill="#904aae" layoutX="82.0" layoutY="673.0" radius="22.0" stroke="#904aae" strokeType="INSIDE" />
+      <Label layoutX="68.0" layoutY="659.0" text="සිං" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnSinhala" layoutX="59.0" layoutY="650.0" prefHeight="45.0" prefWidth="45.0" text="." textFill="#ab3ba2" />
    </children>
 </AnchorPane>
