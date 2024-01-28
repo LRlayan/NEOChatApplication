@@ -69,10 +69,10 @@ public class ClientFormController implements Initializable {
     private JFXButton btnSinhala;
     @FXML
     private JFXButton btnRestore;
-
+    private double x = 0;
+    private double y = 0;
     EmojiBar emojiBar = new EmojiBar();
     SinhalaTyping characterBar = new SinhalaTyping();
-
 
     public ClientFormController(){
 
@@ -80,74 +80,34 @@ public class ClientFormController implements Initializable {
 
     @FXML
     void closeOnAction(ActionEvent event) {
-        setCloseWindow();
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+        shutdown();
     }
 
     @FXML
     void maxRestoreOnAction(ActionEvent event) {
-        setMaxRestore();
+        Stage stage = (Stage) btnMaxRestore.getScene().getWindow();
+        stage.setMaximized(true);
+        if (stage.isMaximized()){
+            btnMaxRestore.setVisible(false);
+        }
     }
 
     @FXML
     void restoreOnAction(ActionEvent event) {
-        restore();
+        Stage stage = (Stage) btnRestore.getScene().getWindow();
+        stage.setMaximized(false);
+        if (!stage.isMaximized()){
+            btnMaxRestore.setVisible(true);
+        }
     }
 
     @FXML
     void minimizeOnAction(ActionEvent event) {
-        setBtnMinimize();
+        Stage stage = (Stage) btnMinimize.getScene().getWindow();
+        stage.setIconified(true);
     }
-
-    private double x = 0;
-    private double y = 0;
-
-    public void setBtnMinimize(){
-        btnMinimize.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Stage stage = (Stage) btnMinimize.getScene().getWindow();
-                stage.setIconified(true);
-            }
-        });
-    }
-
-    private void setCloseWindow() {
-        btnClose.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-               Stage stage = (Stage) btnClose.getScene().getWindow();
-               stage.close();
-               shutdown();
-            }
-        });
-    }
-
-    public void setMaxRestore(){
-        btnMaxRestore.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Stage stage = (Stage) btnMaxRestore.getScene().getWindow();
-                stage.setMaximized(true);
-                if (stage.isMaximized()){
-                    btnMaxRestore.setVisible(false);
-                }
-            }
-        });
-    }
-
-    public void restore(){
-        btnRestore.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                Stage stage = (Stage) btnRestore.getScene().getWindow();
-                stage.setMaximized(false);
-                if (!stage.isMaximized()){
-                    btnMaxRestore.setVisible(true);
-                }
-            }
-        });
-    }
-
 
     @FXML
     void anchorPaneDraggedOnAction(MouseEvent event) {
@@ -214,7 +174,7 @@ public class ClientFormController implements Initializable {
         VBox vBox = new VBox(characterBar);
         vBox.setPrefSize(150,300);
         vBox.setStyle("-fx-font-size: 25");
-        vBox.setLayoutX(0);
+        vBox.setLayoutX(50);
         vBox.setLayoutY(350);
 
         anchorpane.getChildren().add(vBox);
@@ -242,7 +202,7 @@ public class ClientFormController implements Initializable {
         VBox vBox = new VBox(emojiBar);
         vBox.setPrefSize(150,300);
         vBox.setStyle("-fx-font-size: 25");
-        vBox.setLayoutX(50);
+        vBox.setLayoutX(0);
         vBox.setLayoutY(350);
 
         anchorpane.getChildren().add(vBox);
@@ -395,7 +355,6 @@ public class ClientFormController implements Initializable {
 
         vBox.getChildren().add(hBox);
         vBox.getChildren().add(hBoxTime);
-        //System.out.println(sendClientMsg.length());
 
             try {
                 dataOutputStream.writeUTF(username + "-" + sendClientMsg);
