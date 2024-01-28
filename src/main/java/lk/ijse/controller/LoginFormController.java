@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,12 +32,8 @@ public class LoginFormController {
             fxmlLoader.setController(controller);
 
             stage.setScene(new Scene(fxmlLoader.load()));
-            stage.setResizable(false);
             stage.centerOnScreen();
-
-            stage.setOnCloseRequest(windowEvent -> {
-                controller.shutdown();
-            });
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
             txtUsername.clear();
         }else {
