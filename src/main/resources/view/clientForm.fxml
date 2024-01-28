@@ -24,7 +24,7 @@
       </ImageView>
       <ScrollPane fx:id="scrollPane" layoutX="9.0" layoutY="87.0" prefHeight="553.0" prefWidth="664.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../css/scrollPane.css">
          <content>
-            <VBox fx:id="vBox" prefHeight="62.0" prefWidth="576.0" />
+            <VBox fx:id="vBox" prefHeight="62.0" prefWidth="661.0" />
          </content>
          <styleClass>
             <String fx:value="scroll-pane" />
