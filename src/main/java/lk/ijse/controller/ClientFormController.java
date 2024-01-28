@@ -40,7 +40,7 @@ public class ClientFormController implements Initializable {
     private AnchorPane anchorpane;
     @FXML
     private Label lblUsername;
-    public static String username;
+    private String username;
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -63,6 +63,10 @@ public class ClientFormController implements Initializable {
 
              lblUsername.setText(username);
 
+    }
+
+    public void shutdown() {
+        ServerFormController.receiveMessage(username + " left.");
     }
 
     @Override
@@ -287,5 +291,9 @@ public class ClientFormController implements Initializable {
 
         hBox.getChildren().add(time);
         return hBox;
+    }
+
+    public void setClientName(String name){
+        this.username = name;
     }
 }
