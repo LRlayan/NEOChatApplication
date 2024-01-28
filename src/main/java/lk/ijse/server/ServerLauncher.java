@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ServerLauncher extends Application {
     @Override
@@ -23,7 +24,6 @@ public class ServerLauncher extends Application {
         Scene scene = new Scene(rootNode);
         stage.setScene(scene);
         stage.centerOnScreen();
-       // stage.initModality(Modality.WINDOW_MODAL);
         stage.setResizable(false);
         stage.show();
     }
