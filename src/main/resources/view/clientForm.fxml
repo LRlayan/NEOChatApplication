@@ -36,9 +36,9 @@
             <String fx:value="track" />
          </styleClass>
       </ScrollPane>
-      <Label layoutX="498.0" layoutY="44.0" text="Welcome NEO Chat " textFill="WHITE">
+      <Label layoutX="249.0" layoutY="53.0" text="Welcome NEO Chat Room " textFill="WHITE">
          <font>
-            <Font name="Gadugi Bold" size="19.0" />
+            <Font name="Gadugi Bold" size="15.0" />
          </font>
       </Label>
       <TextField fx:id="txtMsg" layoutX="111.0" layoutY="650.0" prefHeight="44.0" prefWidth="463.0" promptText="   Typing....." style="-fx-background-radius: 20;" />
@@ -49,7 +49,7 @@
          </image>
       </ImageView>
       <JFXButton buttonType="RAISED" layoutX="629.0" layoutY="652.0" onAction="#sendMsgOnAction" prefHeight="40.0" prefWidth="44.0" style="-fx-background-radius: 30;" text="." textFill="WHITE" />
-      <Label fx:id="lblUsername" layoutX="98.0" layoutY="28.0" prefHeight="17.0" prefWidth="166.0" textFill="WHITE">
+      <Label fx:id="lblUsername" layoutX="90.0" layoutY="28.0" prefHeight="25.0" prefWidth="266.0" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -102,5 +102,10 @@
       <Rectangle fx:id="rectangleMin" arcHeight="5.0" arcWidth="5.0" height="14.0" layoutX="611.0" layoutY="16.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" width="18.0" />
       <JFXButton fx:id="btnRestore" layoutX="607.0" layoutY="9.0" onAction="#restoreOnAction" opacity="0.24" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
       <JFXButton fx:id="btnMaxRestore" layoutX="607.0" layoutY="8.0" onAction="#maxRestoreOnAction" prefHeight="28.0" prefWidth="27.0" style="-fx-background-radius: 10;" text="." />
+      <Label layoutX="263.0" layoutY="2.0" text="Play Tec Pvt Ltd" textFill="WHITE">
+         <font>
+            <Font name="Gadugi Bold" size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
