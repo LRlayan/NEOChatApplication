@@ -329,6 +329,10 @@ public class ClientFormController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        if (characterBar.isVisible() || emojiBar.isVisible()) {
+            characterBar.setVisible(false);
+            emojiBar.setVisible(false);
+        }
     }
 
     public void sendMsg(String sendClientMsg) throws SQLException {
@@ -362,6 +366,11 @@ public class ClientFormController implements Initializable {
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
+            }
+
+            if (characterBar.isVisible() || emojiBar.isVisible()){
+                characterBar.setVisible(false);
+                emojiBar.setVisible(false);
             }
             txtMsg.clear();
     }
