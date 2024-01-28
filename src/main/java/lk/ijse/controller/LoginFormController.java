@@ -3,11 +3,9 @@ package lk.ijse.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,20 +22,23 @@ public class LoginFormController {
     @FXML
     void loginOnAction(ActionEvent event) throws IOException, SQLException {
         if (!txtUsername.getText().isEmpty()){
-            ClientFormController.username = txtUsername.getText();
             lblErrorMsg.setText("");
-
-            Parent rootNode = FXMLLoader.load(getClass().getResource("/view/clientForm.fxml"));
-            Scene scene = new Scene(rootNode);
             Stage stage = new Stage();
-            stage.setScene(scene);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/clientForm.fxml"));
+
+            ClientFormController controller = new ClientFormController();
+            controller.setClientName(txtUsername.getText());
+            fxmlLoader.setController(controller);
+
+            stage.setScene(new Scene(fxmlLoader.load()));
+            stage.setResizable(false);
             stage.centerOnScreen();
-            stage.initModality(Modality.WINDOW_MODAL);
 
+            stage.setOnCloseRequest(windowEvent -> {
+                controller.shutdown();
+            });
             stage.show();
-
             txtUsername.clear();
-
         }else {
             lblErrorMsg.setText("Please enter your username!");
         }
