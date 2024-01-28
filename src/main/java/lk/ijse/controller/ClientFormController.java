@@ -4,22 +4,28 @@ import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import lk.ijse.emoji.EmojiBar;
 
 import java.awt.*;
@@ -52,11 +58,104 @@ public class ClientFormController implements Initializable {
     private DataInputStream dataInputStream;
     @FXML
     private JFXButton emojiBtn;
+    @FXML
+    private JFXButton btnClose;
+    @FXML
+    private JFXButton btnMaxRestore;
+    @FXML
+    private JFXButton btnMinimize;
+
+    @FXML
+    private JFXButton btnRestore;
 
     EmojiBar emojiBar = new EmojiBar();
 
     public ClientFormController(){
 
+    }
+
+    @FXML
+    void closeOnAction(ActionEvent event) {
+        setCloseWindow();
+    }
+
+    @FXML
+    void maxRestoreOnAction(ActionEvent event) {
+        setMaxRestore();
+    }
+
+    @FXML
+    void restoreOnAction(ActionEvent event) {
+        restore();
+    }
+
+    @FXML
+    void minimizeOnAction(ActionEvent event) {
+        setBtnMinimize();
+    }
+
+    private double x = 0;
+    private double y = 0;
+
+    public void setBtnMinimize(){
+        btnMinimize.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Stage stage = (Stage) btnMinimize.getScene().getWindow();
+                stage.setIconified(true);
+            }
+        });
+    }
+
+    private void setCloseWindow() {
+        btnClose.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+               Stage stage = (Stage) btnClose.getScene().getWindow();
+               stage.close();
+               shutdown();
+            }
+        });
+    }
+
+    public void setMaxRestore(){
+        btnMaxRestore.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Stage stage = (Stage) btnMaxRestore.getScene().getWindow();
+                stage.setMaximized(true);
+                if (stage.isMaximized()){
+                    btnMaxRestore.setVisible(false);
+                }
+            }
+        });
+    }
+
+    public void restore(){
+        btnRestore.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Stage stage = (Stage) btnRestore.getScene().getWindow();
+                stage.setMaximized(false);
+                if (!stage.isMaximized()){
+                    btnMaxRestore.setVisible(true);
+                }
+            }
+        });
+    }
+
+
+    @FXML
+    void anchorPaneDraggedOnAction(MouseEvent event) {
+        Stage stage = (Stage) anchorpane.getScene().getWindow();
+        stage.setY(event.getScreenY() - y);
+        stage.setX(event.getScreenX() - x);
+    }
+
+    @FXML
+    void anchorPanePressedOnAction(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
     }
 
     public void setUsername() throws SQLException {
