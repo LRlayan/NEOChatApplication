@@ -22,6 +22,7 @@ public class LoginFormController {
 
     @FXML
     void loginOnAction(ActionEvent event) throws IOException, SQLException {
+
         if (!txtUsername.getText().isEmpty()){
             lblErrorMsg.setText("");
             Stage stage = new Stage();
