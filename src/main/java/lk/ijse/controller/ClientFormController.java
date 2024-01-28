@@ -4,14 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -22,9 +19,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import lk.ijse.emoji.EmojiBar;
 import lk.ijse.sinhalaType.SinhalaTyping;
@@ -38,7 +36,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ClientFormController implements Initializable {
@@ -69,6 +66,11 @@ public class ClientFormController implements Initializable {
     private JFXButton btnSinhala;
     @FXML
     private JFXButton btnRestore;
+    @FXML
+    private Circle firstCircle;
+    @FXML
+    private Rectangle rectangleMin;
+
     private double x = 0;
     private double y = 0;
     EmojiBar emojiBar = new EmojiBar();
@@ -91,6 +93,8 @@ public class ClientFormController implements Initializable {
         stage.setMaximized(true);
         if (stage.isMaximized()){
             btnMaxRestore.setVisible(false);
+            firstCircle.setVisible(false);
+            rectangleMin.setVisible(false);
         }
     }
 
@@ -100,6 +104,8 @@ public class ClientFormController implements Initializable {
         stage.setMaximized(false);
         if (!stage.isMaximized()){
             btnMaxRestore.setVisible(true);
+            firstCircle.setVisible(true);
+            rectangleMin.setVisible(true);
         }
     }
 
