@@ -28,8 +28,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ClientFormController implements Initializable {
@@ -53,13 +55,23 @@ public class ClientFormController implements Initializable {
 
     EmojiBar emojiBar = new EmojiBar();
 
-    public void setUsername(){
-        lblUsername.setText(username);
+    public ClientFormController(){
+
+    }
+
+    public void setUsername() throws SQLException {
+
+             lblUsername.setText(username);
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setUsername();
+        try {
+            setUsername();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         new Thread(new Runnable() {
             @Override
@@ -68,8 +80,8 @@ public class ClientFormController implements Initializable {
                     socket = new Socket("localhost" , 3009);
                     dataInputStream = new DataInputStream(socket.getInputStream());
                     dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                    ServerFormController.receiveMessage(username + " joined...");
 
+                    ServerFormController.receiveMessage(username + " joined...");
                     while (socket.isConnected()){
                         String receiveMsg = dataInputStream.readUTF();
                         receiveMessage(receiveMsg , ClientFormController.this.vBox);
@@ -185,12 +197,12 @@ public class ClientFormController implements Initializable {
     }
 
     @FXML
-    void sendMsgOnAction(ActionEvent event) {
+    void sendMsgOnAction(ActionEvent event) throws SQLException {
         sendMsg(txtMsg.getText());
     }
 
     @FXML
-    void sendImageOnAction(ActionEvent event) {
+    void sendImageOnAction(ActionEvent event) throws SQLException {
         FileDialog fileDialog = new FileDialog((Frame) null,"Select Image");
         fileDialog.setMode(FileDialog.LOAD);
         fileDialog.setVisible(true);
@@ -199,7 +211,7 @@ public class ClientFormController implements Initializable {
         sendImage(file);
     }
 
-    public void sendImage(String sendImage){
+    public void sendImage(String sendImage) throws SQLException {
         Image image = new Image(sendImage);
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(200);
@@ -217,12 +229,13 @@ public class ClientFormController implements Initializable {
         try {
             dataOutputStream.writeUTF(username + "-" + sendImage);
             dataOutputStream.flush();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void sendMsg(String sendClientMsg){
+    public void sendMsg(String sendClientMsg) throws SQLException {
 
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER_RIGHT);
@@ -251,6 +264,7 @@ public class ClientFormController implements Initializable {
             try {
                 dataOutputStream.writeUTF(username + "-" + sendClientMsg);
                 dataOutputStream.flush();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

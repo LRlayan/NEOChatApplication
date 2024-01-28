@@ -11,6 +11,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginFormController {
 
@@ -20,9 +21,8 @@ public class LoginFormController {
     @FXML
     private Label lblErrorMsg;
 
-
     @FXML
-    void loginOnAction(ActionEvent event) throws IOException {
+    void loginOnAction(ActionEvent event) throws IOException, SQLException {
         if (!txtUsername.getText().isEmpty()){
             ClientFormController.username = txtUsername.getText();
             lblErrorMsg.setText("");
@@ -34,7 +34,6 @@ public class LoginFormController {
             stage.centerOnScreen();
             stage.initModality(Modality.WINDOW_MODAL);
 
-            ClientFormController controller = new ClientFormController();
             stage.show();
 
             txtUsername.clear();
