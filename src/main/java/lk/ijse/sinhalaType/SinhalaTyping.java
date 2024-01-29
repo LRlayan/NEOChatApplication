@@ -21,11 +21,19 @@ public class SinhalaTyping extends VBox {
                     String.valueOf('\u0D90'), String.valueOf('\u0D91'), String.valueOf('\u0D92'),
                     String.valueOf('\u0D94'), String.valueOf('\u0D95'), String.valueOf('\u0D96'),
                     String.valueOf('\u0D9C'), String.valueOf('\u0D9A'), String.valueOf('\u0DCF'),
-                    String.valueOf('\u0DDC'), String.valueOf('\u0D83'), String.valueOf('\u0D82'),
-                    String.valueOf('\u0D79'), String.valueOf('\u0D78'), String.valueOf('\u0D77'),
-                    String.valueOf('\u0D76'), String.valueOf('\u0D75'), String.valueOf('\u0D74'),
-                    String.valueOf('\u0D73'), String.valueOf('\u0D72'), String.valueOf('\u0D71'),
-                    String.valueOf('\u0D70')
+                    String.valueOf('\u0DDC'), String.valueOf('\u0D83'), String.valueOf(Character.valueOf((char)0x0D9A)),
+                    String.valueOf(Character.valueOf((char) 0x0D9B)), String.valueOf(Character.valueOf((char) 0x0D9A)), String.valueOf(Character.valueOf((char)0x0DCF)), String.valueOf(Character.valueOf((char)0x0D9B)),
+                    String.valueOf(Character.valueOf((char)0x0DCF)), String.valueOf(Character.valueOf((char)0x0D9A)), String.valueOf(Character.valueOf((char)0x0DD0)), String.valueOf(Character.valueOf((char)0x0D9B)),
+                    String.valueOf(Character.valueOf((char)0x0D9A)), String.valueOf(Character.valueOf((char)0x0DD1)), String.valueOf(Character.valueOf((char)0x0D9B)), String.valueOf(Character.valueOf((char)0x0DD1)),
+                    String.valueOf(Character.valueOf((char)0x0D9A)), String.valueOf(Character.valueOf((char)0x0DD2)), String.valueOf(Character.valueOf((char)0x0D9B)), String.valueOf(Character.valueOf((char)0x0DD2)),
+                    String.valueOf(Character.valueOf((char)0x0D9A)), String.valueOf(Character.valueOf((char)0x0DD3)), String.valueOf(Character.valueOf((char)0x0D9B)), String.valueOf(Character.valueOf((char)0x0DD3)),
+                    String.valueOf(Character.valueOf((char)0x0D9A)), String.valueOf(Character.valueOf((char)0x0DD4)), String.valueOf(Character.valueOf((char)0x0D9B)), String.valueOf(Character.valueOf((char)0x0DD4)),
+                    String.valueOf(Character.valueOf((char)0x0D9A)), String.valueOf(Character.valueOf((char)0x0DD6)), String.valueOf(Character.valueOf((char)0x0D9B)), String.valueOf(Character.valueOf((char)0x0DD6)),
+                    String.valueOf(Character.valueOf((char)0x0DAF)), String.valueOf(Character.valueOf((char)0x0DB6)), String.valueOf(Character.valueOf((char)0x0DB4)), String.valueOf(Character.valueOf((char)0x0DB8)),
+                    String.valueOf(Character.valueOf((char)0x0DC0)), String.valueOf(Character.valueOf((char)0x0DC3)), String.valueOf(Character.valueOf((char)0x0DC4)), String.valueOf(Character.valueOf((char)0x0DBA)),
+                    String.valueOf(Character.valueOf((char)0x0DBB)), String.valueOf(Character.valueOf((char)0x0DB1)), String.valueOf(Character.valueOf((char)0x0DBD)), String.valueOf(Character.valueOf((char)0x0DC5)),
+                    String.valueOf(Character.valueOf((char)0x0DA2)), String.valueOf(Character.valueOf((char)0x0DC1)), String.valueOf(Character.valueOf((char)0x0DC2)),String.valueOf(Character.valueOf((char)0x0DD0))
+
         };
 
         for (String sinhalaChar : sinhalaCharacter){
