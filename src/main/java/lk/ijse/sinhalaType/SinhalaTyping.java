@@ -16,12 +16,10 @@ public class SinhalaTyping extends VBox {
     public SinhalaTyping(){
         List<String> sinhala = new ArrayList<>();
 
-        String[] sinhalaCharacter = new String[]{String.valueOf('\u0D85'), String.valueOf('\u0D86'),
-                    String.valueOf('\u0D87'), String.valueOf('\u0D88'), String.valueOf('\u0D89'),
-                    String.valueOf('\u0D90'), String.valueOf('\u0D91'), String.valueOf('\u0D92'),
-                    String.valueOf('\u0D94'), String.valueOf('\u0D95'), String.valueOf('\u0D96'),
-                    String.valueOf('\u0D9C'), String.valueOf('\u0D9A'), String.valueOf('\u0DCF'),
-                    String.valueOf('\u0DDC'), String.valueOf('\u0D83'), String.valueOf(Character.valueOf((char)0x0D9A)),
+        String[] sinhalaCharacter = new String[]{
+                    String.valueOf('\u0D85'), String.valueOf('\u0D86'), String.valueOf('\u0D87'), String.valueOf('\u0D88'), String.valueOf('\u0D89'),
+                    String.valueOf('\u0D90'), String.valueOf('\u0D91'), String.valueOf('\u0D92'), String.valueOf('\u0D94'), String.valueOf('\u0D95'), String.valueOf('\u0D96'),
+                    String.valueOf('\u0D9C'), String.valueOf('\u0D9A'), String.valueOf('\u0DCF'), String.valueOf('\u0DDC'), String.valueOf('\u0D83'), String.valueOf(Character.valueOf((char)0x0D9A)),
                     String.valueOf(Character.valueOf((char) 0x0D9B)), String.valueOf(Character.valueOf((char) 0x0D9A)), String.valueOf(Character.valueOf((char)0x0DCF)), String.valueOf(Character.valueOf((char)0x0D9B)),
                     String.valueOf(Character.valueOf((char)0x0DCF)), String.valueOf(Character.valueOf((char)0x0D9A)), String.valueOf(Character.valueOf((char)0x0DD0)), String.valueOf(Character.valueOf((char)0x0D9B)),
                     String.valueOf(Character.valueOf((char)0x0D9A)), String.valueOf(Character.valueOf((char)0x0DD1)), String.valueOf(Character.valueOf((char)0x0D9B)), String.valueOf(Character.valueOf((char)0x0DD1)),
